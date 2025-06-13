@@ -1,4 +1,4 @@
-## Configuration for predicting SFT data ##
+## Configuration for predicting ##
 ### model
 model_name_or_path: path/to/your/model
 #adapter_name_or_path: path/to/your/adapter
