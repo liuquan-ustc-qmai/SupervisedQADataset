@@ -1,0 +1,47 @@
+## Configuration for pretrain ##
+### model
+model_name_or_path: path/to/base/model
+
+### method
+deepspeed: ds_z3_config.json
+stage: pt
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 16
+# use_unsloth: True
+flash_attn: fa2
+
+### dataset
+dataset: ipc_des,wudao_26w,cn_use_1_40w,us_use_1_5w,eu_use_1_5w
+cutoff_len: 1024
+max_samples: 800000
+overwrite_cache: false
+preprocessing_num_workers: 4
+
+### output
+output_dir: saves_dir/of/results
+logging_steps: 500
+save_steps: 1000
+plot_loss: true
+cache_dir: /path/to/cache
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: 34
+gradient_accumulation_steps: 2
+learning_rate: 1.0e-4
+num_train_epochs: 1.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+#fp16: true
+ddp_timeout: 180000000
+tokenized_path: /path/to/save/tokenized_data
+gradient_checkpointing: true
+
+### eval
+val_size: 0.02
+per_device_eval_batch_size: 32
+eval_strategy: steps
+eval_steps: 2000
