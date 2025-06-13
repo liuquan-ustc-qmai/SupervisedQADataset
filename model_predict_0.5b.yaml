@@ -1,10 +1,7 @@
+## Configuration for predicting SFT data ##
 ### model
-model_name_or_path: models/patent_llm/ab_study/7b_sft/QA_ITech
-#adapter_name_or_path: saves/IWP_instruct/lora/sft/QA_ITech_300
-
-#model_name_or_path: models/sft_stage3/techQA_sft_qwen2.5_7b_ITech_ck110
-#adapter_name_or_path: saves/qwen2.5_7b/lora/stage3/QA_ITJoint_v2/checkpoint-100
-#adapter_name_or_path: saves/qwen2.5_7b/lora/stage2_1/QA_ITJoint/checkpoint-96
+model_name_or_path: path/to/your/model
+#adapter_name_or_path: path/to/your/adapter
 
 ### method
 stage: sft
@@ -12,17 +9,17 @@ do_predict: true
 finetuning_type: lora
 
 ### dataset
-eval_dataset: QA_IPC4test_v3
+eval_dataset: your_eval_dataset
 
 template: default
 cutoff_len: 512
-max_samples: 1000 # 每个数据集抽样
+max_samples: 1000 
 overwrite_cache: true
 preprocessing_num_workers: 16
-#temperature: 0.01
+temperature: 0.01
 
 ### output
-output_dir: saves/patent_llm/predict/7b_sft/IPC_task
+output_dir: saves_dir/of/results
 cache_dir: /data/cache
 overwrite_output_dir: true
 
