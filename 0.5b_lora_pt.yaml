@@ -1,18 +1,6 @@
-### vllm in ours(pt in qwen2.5_0.5-base/Instruct) ###
-## qwen2.5_0.5-base
-# vllm after cpt
-#model_name_or_path: /data1/model/hub/Qwen/Qwen2___5-3B-Instruct
-##adapter_name_or_path: saves/qwen2.5_0.5b/lora/sft/QA_IPC_v3
-# vllm after sft
-#model_name_or_path: models/CPT/qwen2.5_3b_ipc
-#adapter_name_or_path: saves/qwen2.5_3b/lora/sft/QA_IPC_v3
-## qwen2.5_0.5-Instruct
-#model_name_or_path: models/CPT/qwen2.5_0.5b-Instruct_ipc
-#adapter_name_or_path: saves/qwen2.5_0.5b-Instruct/lora/sft/QA_IPC
-## CPT AND SFT base on qwen2.5_3b
-model_name_or_path: models/patent_llm/ab_study/7b_sft/QA_ITech
-#adapter_name_or_path: saves/IWP_instruct/lora/sft/QA_Tech_v3
-#adapter_name_or_path: saves/IWP_instruct/lora/sft/QA_ITech_300
+## Local inference ##
+model_name_or_path: path/to/your/model
+# adapter_name_or_path: path/to/your/adapter
 template: default
 #finetuning_type: lora
 infer_backend: huggingface
