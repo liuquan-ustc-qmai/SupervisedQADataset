@@ -1,5 +1,5 @@
 
-# CoreTech-LLM: A LLM focusing on key technologies and IPC Q&A
+# CoreTech-LLM: A LLM focusing on key technologies and International Patent Classification(IPC) Q&A
 
 ## 📖 Introduction
  <!-- CoreTech-LLM是基于Qwen2-7B架构，通过多阶段训练流程构建的领域专用大模型。
@@ -8,9 +8,9 @@
 ​​阶段2:​课程学习微调阶段​​：采用渐进式课程学习（Curriculum Learning）策略，通过难度分级的监督微调，显著提升模型在技术领域的关键技术识别和IPC分类任务中的表现。 -->
 **CoreTech-LLM**​ is a domain-specific LLM built upon the Qwen2.5-7B(base) architecture through a multi-stage training pipeline. The model adopts a dual-phase optimization approach:
 
-1. Continue Pre-training Phase​​: Continuous training on curated domain corpora (including high-quality data sources such as IPC classification documents from national patent offices with corresponding description files, and patent texts) to enhance the model's fundamental semantic understanding capabilities.
+1. Continue Pre-training (CPT) Phase​​: Continuous training on curated domain corpora (including high-quality data sources such as IPC classification documents from national patent offices with corresponding description files, and patent texts) to enhance the model's fundamental semantic understanding capabilities.
 
-2. Supervised FineTuning Phase​​: Implementation of progressive Curriculum Learning strategy through difficulty-graded supervised fine-tuning, significantly improving the model's performance in technical domain tasks including key technology identification and IPC classification.
+2. Supervised FineTuning (SFT) Phase​​: Implementation of progressive Curriculum Learning (CL) strategy through difficulty-graded supervised fine-tuning, significantly improving the model's performance in technical domain tasks including key technology identification and IPC classification.
 
 
 
@@ -29,8 +29,22 @@ Parameter Description:
 - `--use_cpu`: use only CPU for inference
 - `--gpus {gpu_ids}`: Specifies the number of GPU devices used, the default is 0. If using multiple GPUs, separate them with commas, such as 0,1,2 -->
 
+## 📚 Dataset
+### CPT Data
+| Classification     | Source           | Nums (Entries) | Tokens    | Storage Size (GB) |
+|--------------------|------------------|----------------|------------------|-------------------|
+| General Corpus      | wudao            | 260,000        | 235,000,000      | ~0.44 GB          |
+| Specialized Corpus  | IPC              | 70,000         | 160,000,000      | ~0.30 GB          |
+| Specialized Corpus  | Chinese Patents  | 400,000        | 3,700,000,000    | ~6.90 GB          |
+| Specialized Corpus  | European Patents | 50,000         | 912,000,000      | ~1.70 GB          |
+| Specialized Corpus  | US Patents       | 50,000         | 1,040,000,000    | ~1.94 GB          |
 
 
+### SFT Data
+| Dataset       | IPC_TASK (Train) | IPC_TASK (Test) | TECH_TASK (Train) | TECH_TASK (Test) |
+|---------------|------------------|-----------------|-------------------|------------------|
+| KRL-SFT       | 138              | 15              | 138               | 15               |
+| GovPatent-SFT | 168              | 22              | 130               | 22               |
 
 ## 🚀 Training Pipeline
 
@@ -111,15 +125,16 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli chat path/to/run_vllm.yaml
 
 
 #### Inference Examples
+To be added
 
 
 
 ## ⚠️ LICENSE
 
-<!--The license agreement for the project code is [The Apache License 2.0](/LICENSE), the code is free for commercial use, and the model weights and data can only be used for research purposes. Please attach MedicalGPT's link and license agreement in the product description.-->
+To be added
 
 ## 😇 Citation
-
+To be added
 <!-- If you used MedicalGPT in your research, please cite as follows:
 
 ```latex
@@ -129,8 +144,8 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli chat path/to/run_vllm.yaml
    year={2023},
    howpublished={\url{https://github.com/shibing624/MedicalGPT}},
 }
-```
--->
+``` -->
+
 
 <!-- ## 💕 Acknowledgements
 
