@@ -1,0 +1,21 @@
+## Configuration for evaluating ##
+### model after CPT
+model_name_or_path: path/to/your/model
+#adapter_name_or_path: path/to/your/adapter
+
+### method
+#finetuning_type: lora
+
+### dataset
+task: cmmlu_test # choices: [mmlu_test, ceval_validation, cmmlu_test]
+template: fewshot
+lang: zh
+n_shot: 5
+
+### output
+save_dir: saves_dir/of/results
+#overwrite_save_dir: true
+cache_dir: /data/cache
+
+### eval
+batch_size: 8
