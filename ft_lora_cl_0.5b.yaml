@@ -1,0 +1,53 @@
+### device: aliyun ###
+### method: sft in qwen2.5_3b_ipc(after cpt in ipc_7w) ###
+## model
+model_name_or_path: models/patent_llm/ab_study/7b_sft/QA_IPC
+#model_name_or_path: models/CPT_SFT/IWP-Instruct
+#model_name_or_path: models/CPT_SFT/IWP-instruct/QA_IPC_300
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 16
+lora_alpha: 32
+lora_dropout: 0.05
+
+### dataset
+dataset: QA_Tech_v3,QA_Tech_v3_2
+template: default
+cutoff_len: 512
+max_samples: 10000
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### output
+output_dir: saves/patent_llm/ab_study/7b_sft/QA_ITch # all techQA_data
+
+logging_steps: 10 # total_steps：231
+save_steps: 20
+plot_loss: true
+cache_dir: /data/cache
+overwrite_output_dir: true
+
+### train
+# 原CL 5000+数据
+#per_device_train_batch_size: 10
+#gradient_accumulation_steps: 8
+# 500数据
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 2
+#learning_rate: 1.0e-4
+learning_rate: 7.0e-5
+num_train_epochs: 15.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+
+### eval
+val_size: 0.01
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 30
